@@ -45,6 +45,16 @@ function Home() {
               setNewTask(e.target.value) 
             }}
           />
+
+          <select className="todo-options">
+            <option>Learning</option>
+            <option>Shopping</option>
+            <option>Personal</option>
+            <option>Work</option>
+            <option>Health</option>
+            <option>Others</option>
+          </select>
+
           <img
            src={Imgadd}
             alt="add"
