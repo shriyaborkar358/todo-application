@@ -1,0 +1,39 @@
+.heading{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.todocard-container{
+    height: 400px;
+    width: 450px;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.add-input-conatiner{
+    display: flex;
+    justify-content: center;
+}
+
+.todolist{
+    width: 320px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    margin-right: 10px;
+}
+
+.add-icon{
+    height: 45px;
+    margin-left: 10px;
+}
+
+
+.add-icon:hover{
+    transform: rotate(90deg);
+    transition: 1s;
+}
