@@ -1,7 +1,20 @@
-.todo-items{
+.todo-card{
+    background-color: rgb(224, 224, 148);
     border: 1px solid black;
     margin: 10px;
     padding: 10px 15px ;
     font-size: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.category{
+    position: absolute;
+    top: 7px;
+    right: 20px;
+    background-color: rgb(82, 10, 10);
+    color: white;
+    font-size: 17px;
+    padding: 2px 15px;
+    border-radius: 20px;
 }
