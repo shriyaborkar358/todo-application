@@ -1,7 +1,8 @@
 import React from "react";
 import "./ToDoCard.css";
+import DelImg from "./delete-icon.png";
 
-function ToDoCard({ task, category }) {
+function ToDoCard({ index, task, category, deleteItem }) {
   const CATEGORY_EMOGI_MAP = {
     learning: "📑",
     shopping: "🛒",
@@ -22,6 +23,14 @@ function ToDoCard({ task, category }) {
 
   return (
     <div className="todo-card">
+      <img
+        src={DelImg}
+        className="delete-icon"
+        alt="Delete"
+        onClick={() => {
+          deleteItem(index);
+        }}
+      />
       {task}
       <span
         className="category"

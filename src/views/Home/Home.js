@@ -3,23 +3,45 @@ import "./Home.css";
 import Imgadd from "./add.png";
 import ToDoCard from "../../components/ToDocard/ToDoCard";
 import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 function Home() {
   const [todoList, setTodoList] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [category, setCategory] = useState("");
 
-  useEffect(()=>{
-    const savedTodoList = localStorage.getItem("todoList")
-    if(savedTodoList){
-      setTodoList(JSON.parse(savedTodoList))
+  useEffect(() => {
+    const savedTodoList = localStorage.getItem("todoList");
+    if (savedTodoList) {
+      setTodoList(JSON.parse(savedTodoList));
     }
-  },[])
-  
-  useEffect(()=>{
-  if(todoList.length===0)return
-  localStorage.setItem("todoList",JSON.stringify(todoList))
-  },[todoList])
+  }, []);
+
+  useEffect(() => {
+    if (todoList.length === 0) return;
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
+
+  function deleteItem(index) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You Want to delete this Task!",
+      icon: "warning",
+      showCancelButton: true,
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        return;
+      }
+      const newTodoList = todoList.filter((item, i) => {
+        if (i !== index) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      setTodoList(newTodoList);
+    });
+  }
 
   return (
     <div>
@@ -28,7 +50,15 @@ function Home() {
       <div className="todocard-container">
         {todoList.map((todoItem, i) => {
           const { task, category } = todoItem;
-          return <ToDoCard key={i} task={task} category={category} />;
+          return (
+            <ToDoCard
+              key={i}
+              index={i}
+              task={task}
+              category={category}
+              deleteItem={deleteItem}
+            />
+          );
         })}
 
         {todoList.length === 0 ? (
